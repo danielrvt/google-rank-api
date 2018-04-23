@@ -1,0 +1,21 @@
+{
+  "name": "google-rank-tracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Daniel Rodriguez del Villar <daniel@dnd1.com> (http://dnd1.com)",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "koa": "^2.5.0",
+    "koa-compress": "^3.0.0",
+    "koa-logger": "^3.2.0",
+    "koa-route": "^3.2.0",
+    "koa-router": "^7.4.0",
+    "request": "^2.85.0",
+    "request-promise": "^4.2.2"
+  }
+}
