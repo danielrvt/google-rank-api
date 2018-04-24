@@ -1,4 +1,5 @@
 var grank = require('./controllers/grankCtrl');
+var Grank = require('./models/grankModel');
 
 var compress = require('koa-compress');
 var logger = require('koa-logger');
@@ -12,7 +13,13 @@ var router = new Router();
 app.use(logger());
 
 // Routes
-router.get('/grank', grank.get);
+router.get('/grank', async (ctx, next) => {
+     await Grank.test()
+        .then(r => {
+            ctx.body = r;
+            next();
+        });
+});
 
 // Compress
 app .use(router.routes())
