@@ -6,8 +6,7 @@ module.exports = {
         if (!ctx.query.domain) ctx.throw(400,'Missing domain param'); 
         if (!ctx.query.kwlist) ctx.throw(400,'Missing kwlist param');
 
-
-        await Grank.getRankForKWList(ctx.query.domain, ctx.query.kwlist)
+        await GrankModel.getRankForKWList(ctx.query.domain, ctx.query.kwlist)
            .then(res => {
                ctx.body = res;
                next();

@@ -13,13 +13,7 @@ var router = new Router();
 app.use(logger());
 
 // Routes
-router.get('/grank', async (ctx, next) => {
-     await Grank.test()
-        .then(r => {
-            ctx.body = r;
-            next();
-        });
-});
+router.get('/grank', grank.get);
 
 // Compress
 app .use(router.routes())
