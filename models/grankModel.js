@@ -20,7 +20,12 @@ module.exports = {
                 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Safari/537.36'
             },
             transform: body => {
-                return "mamalo";
+                return {
+                    pag: 1,
+                    position: 2,
+                    domain: domain,
+                    kw: kw
+                }
             }
         }));
 
