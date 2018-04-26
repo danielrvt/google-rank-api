@@ -34,7 +34,7 @@ module.exports = {
     },
     test: () => {
         // return Promise.resolve(1);
-        return scrapper.search('amazonvape', 'eliquidos venezuela', '/search?q=eliquidos venezuela')
+        return scrapper.search('amazonvape', 'eliquidos', '/search?q=eliquidos')
 
     }
 

@@ -1,17 +1,19 @@
 var request = require("request-promise");
 var cheerio = require('cheerio');
 
+const baseURL = "https://www.google.com";
+
 module.exports = {
     search: function search (domain, kw, uri, page) {
         if (!page) page = 1;
-        if (page && page > 10) return Promise.resolve({page: -1, pos: -1, domain: domain, kw: kw});
+        if (page && page > 10) return Promise.resolve({page: -1, pos: -1, domain: domain, kw: kw, uri: null});
 
         return request({
-            uri: "https://www.google.co.ve/" + uri,
+            uri: baseURL + uri,
             method: "GET",
             headers: {
                 'Accept': '*/*',
-                'Accept-Language': 'es,en-US;q=0.9,en;q=0.8,fr;q=0.7,it;q=0.6',
+                'Accept-Language': 'es, es-VE, es-ES,en-US;q=0.9,en;q=0.8,fr;q=0.7,it;q=0.6',
                 'Cache-Control': 'no-cache',
                 'Connection': 'keep-alive',
                 'Pragma': 'no-cache',
@@ -23,17 +25,15 @@ module.exports = {
             
             var hrefs = [];
             for (var i=0; i < selection.length; i++) {
-                hrefs.push({uri: selection[i].attribs.href, pos: i});
+                
+                var a = selection[i];
+                if (a.attribs.href.indexOf(domain) > -1) {
+                    return ({page: page, pos: i + 1, domain: domain, kw: kw, uri: a.attribs.href});
+                }
             }
             
-            if (hrefs.filter((h) => h.uri.indexOf(domain) > 0).length > 0) {                
-                var href =  hrefs.pop();
-                console.log("Encontro", {page: page, pos: href.pos, domain: domain, kw: kw})
-                return ({page: page, pos: href.pos, domain: domain, kw: kw});
-            }
-
-            var nextUri = $("#pnnext").attr(href);
-            return search(domain, kw, nextUri, ++page);
+            var nextUri = $("#pnnext").attr("href");            
+            return search(domain, kw, nextUri, page + 1);
         });
     },
 }
