@@ -1,4 +1,4 @@
-var grank = require('./controllers/grankCtrl');
+var grank = require('./middlewares/grank');
 var Grank = require('./models/grankModel');
 
 var compress = require('koa-compress');
