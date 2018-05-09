@@ -14,8 +14,8 @@ module.exports = {
         kw = kwList[0];
 
         var promises = [];
-        for(var i=0; i< kwList.length; i++) {
-            promises.push(scrapper.search('amazonvape.com', kwList[i], '/search?q=' + kwList[i]));
+        for(var i=0; i < kwList.length; i++) {
+            promises.push(scrapper.search(domain, kwList[i], '/search?q=' + kwList[i]));
         }
 
         return Promise.all(promises);

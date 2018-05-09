@@ -5,8 +5,13 @@ var compress = require('koa-compress');
 var logger = require('koa-logger');
 var Router = require('koa-router');
 var Koa = require('koa');
+var cors = require('koa2-cors');
 
 var app = new Koa();
+
+// CORS
+app.use(cors());
+
 var router = new Router();
 
 // Logger
