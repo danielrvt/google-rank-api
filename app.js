@@ -10,7 +10,7 @@ var cors = require('koa2-cors');
 var app = new Koa();
 
 // CORS
-app.use(cors());
+app.use(cors({origin: "*"}));
 
 var router = new Router();
 
