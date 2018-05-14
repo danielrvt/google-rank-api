@@ -28,7 +28,7 @@ module.exports = {
                 
                 var a = selection[i];
                 if (a.attribs.href.indexOf(domain) > -1) {
-                    return ({page: page, pos: i + 1, domain: domain, kw: kw, uri: a.attribs.href});
+                    return ({page: page, asdf: i + 1, domain: domain, kw: kw, uri: a.attribs.href});
                 }
             }
             
