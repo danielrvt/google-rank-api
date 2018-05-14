@@ -18,7 +18,6 @@ module.exports = {
             promises.push(scrapper.search(domain, kwList[i], '/search?q=' + kwList[i]));
         }
 
-        //return Promise.all(promises);
-        Promise.resolve({chupar: "totonita mojadita"});
+        return Promise.all(promises);
     }
 }
